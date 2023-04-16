@@ -372,54 +372,41 @@ div:nth-child(3) {
   cursor: pointer;
 }
 
-/* module form styling */
+/* FORM STYLING */
 
 form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  box-sizing: border-box;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 }
-
 label {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
-
-input[type="text"],
+input,
 select {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
   width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
-
 input[type="submit"] {
   background-color: #4caf50;
-  color: #fff;
+  color: white;
+  padding: 0.5rem;
   border: none;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 4px;
   cursor: pointer;
 }
-
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
-
 .error {
   color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-@media (max-width: 767px) {
-  form {
-    grid-template-columns: 1fr;
-  }
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
 }

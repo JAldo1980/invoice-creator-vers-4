@@ -6,9 +6,7 @@ const noteOutput = document.getElementById("note-output");
 const totalOutput = document.getElementById("total-output");
 
 // render popup HTML
-
 document.getElementById("popup").innerHTML = `
-
 <div class="popup-container">
   <div class="popup-inner-container">
     <h3>Introducing "Invoice-It-Up ⬆"</h3>
@@ -35,8 +33,196 @@ document.getElementById("popup").innerHTML = `
     </div>
   </div>
 </div>
+`;
 
+// form function
 
+function validateForm() {
+  let isValid = true;
+
+  const invoiceNumber = document.forms["invoice-form"]["invoice-number"].value;
+  const businessName = document.forms["invoice-form"]["business-name"].value;
+  const correspondentName =
+    document.forms["invoice-form"]["correspondent-name"].value;
+  const correspondentStreet =
+    document.forms["invoice-form"]["correspondent-street"].value;
+  const correspondentCity =
+    document.forms["invoice-form"]["correspondent-city"].value;
+  const correspondentPostcode =
+    document.forms["invoice-form"]["correspondent-postcode"].value;
+  const recipientName = document.forms["invoice-form"]["recipient-name"].value;
+  const recipientStreet =
+    document.forms["invoice-form"]["recipient-street"].value;
+  const recipientCity = document.forms["invoice-form"]["recipient-city"].value;
+  const recipientPostcode =
+    document.forms["invoice-form"]["recipient-postcode"].value;
+  const taxPercentage = document.forms["invoice-form"]["tax-percentage"].value;
+  const termsLink = document.forms["invoice-form"]["terms-link"].value;
+
+  if (invoiceNumber === "") {
+    document.getElementById("invoice-number-error").innerHTML =
+      "Please enter an invoice number.";
+    isValid = false;
+  } else {
+    document.getElementById("invoice-number-error").innerHTML = "";
+  }
+
+  if (businessName === "") {
+    document.getElementById("business-name-error").innerHTML =
+      "Please enter a business name.";
+    isValid = false;
+  } else {
+    document.getElementById("business-name-error").innerHTML = "";
+  }
+
+  if (correspondentName === "") {
+    document.getElementById("correspondent-name-error").innerHTML =
+      "Please enter a correspondent name.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-name-error").innerHTML = "";
+  }
+
+  if (correspondentStreet === "") {
+    document.getElementById("correspondent-street-error").innerHTML =
+      "Please enter a correspondent street name.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-street-error").innerHTML = "";
+  }
+
+  if (correspondentCity === "") {
+    document.getElementById("correspondent-city-error").innerHTML =
+      "Please enter a correspondent city.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-city-error").innerHTML = "";
+  }
+
+  if (correspondentPostcode === "") {
+    document.getElementById("correspondent-postcode-error").innerHTML =
+      "Please enter a correspondent postcode.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-postcode-error").innerHTML = "";
+  }
+
+  if (recipientName === "") {
+    document.getElementById("recipient-name-error").innerHTML =
+      "Please enter a recipient name.";
+    isValid = false;
+  } else {
+    document.getElementById("recipient-name-error").innerHTML = "";
+  }
+
+  if (recipientStreet === "") {
+    document.getElementById("recipient-street-error").innerHTML =
+      "Please enter a recipient street.";
+    isValid = false;
+  } else {
+    document.getElementById("recipient-street-error").innerHTML = "";
+  }
+
+  if (recipientCity === "") {
+    document.getElementById("recipient-city-error").innerHTML =
+      "Please enter a recipient city.";
+    isValid = false;
+  } else {
+    document.getElementById("recipient-city-error").innerHTML = "";
+  }
+
+  if (recipientPostcode === "") {
+    document.getElementById("recipient-postcode-error").innerHTML =
+      "Please enter a recipient postcode.";
+    isValid = false;
+  } else {
+    document.getElementById("recipient-postcode-error").innerHTML = "";
+  }
+
+  if (taxPercentage === "") {
+    document.getElementById("tax-percentage-error").innerHTML =
+      "Please enter a tax percentage.";
+    isValid = false;
+  } else {
+    document.getElementById("tax-percentage-error").innerHTML = "";
+  }
+
+  if (termsLink === "") {
+    document.getElementById("terms-link-error").innerHTML =
+      "Please enter your terms link.";
+    isValid = false;
+  } else {
+    document.getElementById("terms-link-error").innerHTML = "";
+  }
+}
+
+// render FORM
+
+document.getElementById("form-box").innerHTML = `
+<form id="invoice-form">
+		<div class="form-container">
+			<div>
+				<label for="invoice-number">Invoice Number *</label>
+				<input type="text" id="invoice-number" name="invoice-number" required>
+				<div id="invoice-number-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="business-name">Business Name *</label>
+				<input type="text" id="business-name" name="business-name" required>
+				<div id="business-name-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="correspondent-name">Correspondent Name *</label>
+				<input type="text" id="correspondent-name" name="correspondent-name" required>
+				<div id="correspondent-name-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="correspondent-street">Correspondent Street *</label>
+				<input type="text" id="correspondent-street" name="correspondent-street" required>
+				<div id="correspondent-street-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="correspondent-city">Correspondent City *</label>
+				<input type="text" id="correspondent-city" name="correspondent-city" required>
+				<div id="correspondent-city-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="correspondent-postcode">Correspondent Postcode *</label>
+				<input type="text" id="correspondent-postcode" name="correspondent-postcode" required>
+				<div id="correspondent-postcode-error" class="error-message"></div>
+			</div>
+			<div>
+				<label for="recipient-name">Recipient Name *</label>
+				<input type="text" id="recipient-name" name="recipient-name" required>
+				<div id="recipient-name-error" class="error-message"></div>
+      </div>
+      <div>
+      <label for="recipient-street">Recipient Postcode *</label>
+      <input type="text" id="recipient-street" name="recipient-street" required>
+      <div id="recipient-street-error" class="error-message"></div>
+      </div>
+      <div>
+      <label for="recipient-city">Recipient City *</label>
+      <input type="text" id="recipient-city" name="recipient-city" required>
+      <div id="recipient-city-error" class="error-message"></div>
+      </div>
+      <div>
+      <label for="recipient-postcode">Recipient Postcode *</label>
+      <input type="text" id="recipient-postcode" name="recipient-postcode" required>
+      <div id="recipient-postcode-error" class="error-message"></div>
+      </div>
+
+      <div>
+      <label for="tax-percentage">Tax Percentage *</label>
+      <input type="number" id="tax-percentage" name="tax-percentage" required>
+      <div id="tax-percentage-error" class="error-message"></div>
+      </div>
+
+      <div>
+      <label for="terms-link">Terms Link *</label>
+      <input type="url" id="terms-link" name="terms-link" required>
+      <div id="terms-link-error" class="error-message"></div>
+      </div>
 `;
 
 // constructor function

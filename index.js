@@ -11,8 +11,9 @@ document.getElementById("popup").innerHTML = `
   <div class="popup-inner-container">
     <h3>Introducing "Invoice-It-Up ⬆"</h3>
     <p>
-      The ultimate software for creating your own business invoices! Say goodbye
-      to boring and tedious invoice creation, and hello to a more efficient and
+      The ultimate software for creating your own business invoices! 
+      <span class="span-highlight-yellow">Say goodbye
+      to boring and tedious invoice creation</span>, and hello to a more efficient and
       enjoyable invoicing experience.
     </p>
     <p>
@@ -21,23 +22,30 @@ document.getElementById("popup").innerHTML = `
       invoicing a breeze.
     </p>
     <p>
-      But that's not all! You don't need to be a tech expert to use it. So what
-      are you waiting for?
+      <strong>But that's not all! You don't need to be a tech expert to use it.</strong> 
     </p>
+    <p><em>So what
+    are you waiting for?</em></p>
     <p>
       Try Invoice-It-Up today and simplify your invoicing process, while adding
       a little bit of fun and personality to your business transactions!
     </p>
     <div class="popup-btn">
-    <a href="#"><button>Build Your Invoice!</button></a>
+    <a href="#"><button id="popup-btn">Build Your Invoice! 🧾</button></a>
     </div>
   </div>
 </div>
 `;
 
+// HIDE POPUP ONCE BUTTON CLICKED
+document.getElementById("popup-btn").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+});
+
 // form function
 
-function validateForm() {
+function validateForm(e) {
+  e.preventDefault();
   let isValid = true;
 
   const invoiceNumber = document.forms["invoice-form"]["invoice-number"].value;
@@ -48,15 +56,30 @@ function validateForm() {
     document.forms["invoice-form"]["correspondent-street"].value;
   const correspondentCity =
     document.forms["invoice-form"]["correspondent-city"].value;
+
   const correspondentPostcode =
     document.forms["invoice-form"]["correspondent-postcode"].value;
+
+  const correspondentTelephone =
+    document.forms["invoice-form"]["correspondent-telephone"].value;
+
+  const correspondentEmail =
+    document.forms["invoice-form"]["correspondent-email"].value;
+
+  const recipientBusiness =
+    document.forms["invoice-form"]["recipient-business"].value;
+
   const recipientName = document.forms["invoice-form"]["recipient-name"].value;
+
   const recipientStreet =
     document.forms["invoice-form"]["recipient-street"].value;
   const recipientCity = document.forms["invoice-form"]["recipient-city"].value;
+
   const recipientPostcode =
     document.forms["invoice-form"]["recipient-postcode"].value;
+
   const taxPercentage = document.forms["invoice-form"]["tax-percentage"].value;
+
   const termsLink = document.forms["invoice-form"]["terms-link"].value;
 
   if (invoiceNumber === "") {
@@ -107,6 +130,30 @@ function validateForm() {
     document.getElementById("correspondent-postcode-error").innerHTML = "";
   }
 
+  if (correspondentTelephone === "") {
+    document.getElementById("correspondent-telephone-error").innerHTML =
+      "Please enter a telephone number.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-telephone-error").innerHTML = "";
+  }
+
+  if (correspondentEmail === "") {
+    document.getElementById("correspondent-email-error").innerHTML =
+      "Please enter a valid email.";
+    isValid = false;
+  } else {
+    document.getElementById("correspondent-email-error").innerHTML = "";
+  }
+
+  if (recipientBusiness === "") {
+    document.getElementById("recipient-business-error").innerHTML =
+      "Please enter a recipient business name.";
+    isValid = false;
+  } else {
+    document.getElementById("recipient-business-error").innerHTML = "";
+  }
+
   if (recipientName === "") {
     document.getElementById("recipient-name-error").innerHTML =
       "Please enter a recipient name.";
@@ -154,76 +201,181 @@ function validateForm() {
   } else {
     document.getElementById("terms-link-error").innerHTML = "";
   }
+  return isValid;
 }
 
 // render FORM
 
 document.getElementById("form-box").innerHTML = `
-<form id="invoice-form">
-		<div class="form-container">
-			<div>
-				<label for="invoice-number">Invoice Number *</label>
-				<input type="text" id="invoice-number" name="invoice-number" required>
-				<div id="invoice-number-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="business-name">Business Name *</label>
-				<input type="text" id="business-name" name="business-name" required>
-				<div id="business-name-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="correspondent-name">Correspondent Name *</label>
-				<input type="text" id="correspondent-name" name="correspondent-name" required>
-				<div id="correspondent-name-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="correspondent-street">Correspondent Street *</label>
-				<input type="text" id="correspondent-street" name="correspondent-street" required>
-				<div id="correspondent-street-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="correspondent-city">Correspondent City *</label>
-				<input type="text" id="correspondent-city" name="correspondent-city" required>
-				<div id="correspondent-city-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="correspondent-postcode">Correspondent Postcode *</label>
-				<input type="text" id="correspondent-postcode" name="correspondent-postcode" required>
-				<div id="correspondent-postcode-error" class="error-message"></div>
-			</div>
-			<div>
-				<label for="recipient-name">Recipient Name *</label>
-				<input type="text" id="recipient-name" name="recipient-name" required>
-				<div id="recipient-name-error" class="error-message"></div>
-      </div>
-      <div>
-      <label for="recipient-street">Recipient Postcode *</label>
-      <input type="text" id="recipient-street" name="recipient-street" required>
-      <div id="recipient-street-error" class="error-message"></div>
-      </div>
-      <div>
-      <label for="recipient-city">Recipient City *</label>
-      <input type="text" id="recipient-city" name="recipient-city" required>
-      <div id="recipient-city-error" class="error-message"></div>
-      </div>
-      <div>
-      <label for="recipient-postcode">Recipient Postcode *</label>
-      <input type="text" id="recipient-postcode" name="recipient-postcode" required>
-      <div id="recipient-postcode-error" class="error-message"></div>
-      </div>
 
-      <div>
-      <label for="tax-percentage">Tax Percentage *</label>
-      <input type="number" id="tax-percentage" name="tax-percentage" required>
-      <div id="tax-percentage-error" class="error-message"></div>
-      </div>
+    <div class="form-box-styling">
+    <div>
+      <h1>Invoice-It-Up ⬆</h1>
+    </div>
+    <div class="form-text">
+      <p>Please complete the simple form below to help us start to build your AWESOME invoice! 🚀</p>
+    </div>
+    </div>
+        <div>
+          <form id="invoice-form" class="form-styling" onsubmit="return validateForm(event)>
+              <div class="form-container">
+                <div class="color-1">
+                    <h3>Your Details</h3>
 
-      <div>
-      <label for="terms-link">Terms Link *</label>
-      <input type="url" id="terms-link" name="terms-link" required>
-      <div id="terms-link-error" class="error-message"></div>
-      </div>
+
+                    <div>
+                    <label for="invoice-number">Invoice Number *</label>
+                    <input type="text" id="invoice-number" name="invoice-number" placeholder="e.g. 001">
+                    <div id="invoice-number-error" class="error-message"></div>
+                    </div>
+
+                    <div>
+                    <label for="issue-date">Issue Date *</label>
+                    <input type="date" id="issue-date" name="issue-date">
+                    <div id="issue-date-error" class="error-message"></div>
+                    </div>
+
+                    <div>
+                    <label for="due-date">Due Date *</label>
+                    <input type="date" id="due-date" name="due-date">
+                    <div id="due-date-error" class="error-message"></div>
+                    </div>
+
+                    <div>
+                    <label for="business-name">Your Business Name *</label>
+                    <input type="text" id="business-name" name="business-name" placeholder="e.g. Twitchy Fly Designs Ltd">
+                    <div id="business-name-error" class="error-message"></div>
+                    </div>
+                    <div>
+                    <label for="correspondent-name">Your Name *</label>
+                    <input type="text" id="correspondent-name" name="correspondent-name" placeholder="e.g. Penny Barron">
+                    <div id="correspondent-name-error" class="error-message"></div>
+                    </div>
+                    <div>
+                    <label for="correspondent-street">Your Street *</label>
+                    <input type="text" id="correspondent-street" name="correspondent-street" placeholder="e.g. Old Oak Road">
+                    <div id="correspondent-street-error" class="error-message"></div>
+                    </div>
+                    <div>
+                    <label for="correspondent-city">Your City *</label>
+                    <input type="text" id="correspondent-city" name="correspondent-city" placeholder="e.g. Dublin">
+                    <div id="correspondent-city-error" class="error-message"></div>
+                    </div>
+
+                    <div>
+                    <label for="correspondent-postcode">Your  Postcode *</label>
+                    <input type="text" id="correspondent-postcode" name="correspondent-postcode" placeholder="e.g. D29 1UB">
+                    <div id="correspondent-postcode-error" class="error-message"></div>
+                    </div>
+                    <div>
+                    <label for="correspondent-telephone">Your  Phone Number *</label>
+                    <input type="number" id="correspondent-phone" name="correspondent-phone" placeholder="e.g. 07701 01010101">
+                    <div id="correspondent-phone" class="error-message">
+                    </div>
+                    </div>
+                    <label for="correspondent-email">Your Email *</label>
+                    <input type="email" id="correspondent-email" name="correspondent-email" placeholder="e.g. penny@twitchyfly.com">
+                    <div id="correspondent-email" class="error-message">
+                    </div>
+                
+                </div>
+                
+                <div class="color-2">
+                <h3>Recipient Details</h3>
+                <div>
+                <label for="recipient-business">Recipient Business Name *</label>
+                      <input type="text" id="recipient-business" name="recipient-business">
+                      <div id="recipient-business-error" class="error-message"></div>
+                    </div>
+                      <div>
+                        <label for="recipient-name">Recipient Name *</label>
+                        <input type="text" id="recipient-name" name="recipient-name">
+                        <div id="recipient-name-error" class="error-message"></div>
+                      </div>
+                      <div>
+                      <label for="recipient-street">Recipient Street *</label>
+                      <input type="text" id="recipient-street" name="recipient-street">
+                      <div id="recipient-street-error" class="error-message"></div>
+                      </div>
+                      <div>
+                      <label for="recipient-city">Recipient City *</label>
+                      <input type="text" id="recipient-city" name="recipient-city">
+                      <div id="recipient-city-error" class="error-message"></div>
+                      </div>
+                      <div>
+                      <label for="recipient-postcode">Recipient Postcode *</label>
+                      <input type="text" id="recipient-postcode" name="recipient-postcode">
+                      <div id="recipient-postcode-error" class="error-message"></div>
+                      </div>
+                      
+                </div>
+
+                <div class="color-3">
+                      <h3>Fiscal & Legal Details</h3>
+                      <div>
+                      <label for="tax-percentage">Tax Percentage (%) *</label>
+                      <input type="number" id="tax-percentage" name="tax-percentage" placeholder="e.g. 20  (Please do not add the % symbol 😊)" >
+                      <div id="tax-percentage-error" class="error-message"></div>
+                      </div>
+
+                      <div>
+                      <label for="terms-link">Terms Link *</label>
+                      <input type="url" id="terms-link" name="terms-link" placeholder="https://myterms.com">
+                      <div id="terms-link-error" class="error-message"></div>
+                      </div>
+                </div>
+            <button type="submit" form="invoice-form" id="form-submitted">Submit</button>
+          </form>
+        </div>
+
 `;
+
+// HIDE FORM ONCE FORM  BUTTON "CLICKED" - DISPLAY INVOICE BUILDER
+document
+  .getElementById("form-submitted")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    // HIDE FORM
+    document.getElementById("form-box").style.display = "none";
+    // DISPLAY FORM BUILDER
+    document.querySelector(".inner-container").style.display = "block";
+    document.querySelector("header").style.display = "block";
+
+    // user form details output
+
+    document.getElementById("form-detail-output").innerHTML = `
+    <div class="top-outputs">
+    <div>Invoice Number: ${invoiceNumber.value}</div>
+    <div>Issue Date: ${issueDate.value}</div>
+    <div><strong>Due Date:</strong>${dueDate.value}</div>
+  </div>
+  <div class="middle-outputs">
+    <div>
+      <p>Business Name: ${businessName.value}</p>
+      <p>Name: ${correspondentName.value}</p>
+      <h4>Address:</h4>
+      <p>${correspondentStreet.value}</p>
+      <p>${correspondentCity.value}</p>
+      <p>${correspondentPostcode.value}</p>
+      <p>☎ ${correspondentTelephone.value}</p>
+      <p>📧 ${correspondentEmail.value}</p>
+    </div>
+    <!-- recipient details below -->
+    <div>
+      <p>Business Name: ${recipientBusiness.value}</p>
+      <p>Name: ${recipientName.value}</p>
+      <h4>Address:</h4>
+      <p>${recipientStreet.value}</p>
+      <p>${recipientCity.value}</p>
+      <p>${recipientPostcode.value}</p>
+    </div>
+  </div>
+  <div class="bottom-outputs">
+    <p>Tax: ${taxPercentage.value}%</p>
+    <p>Terms & Conditions Link: ${termsLink.value}</p>
+  </div>
+    `;
+  });
 
 // constructor function
 function itemConstructor(item, currency, amount, quantity) {

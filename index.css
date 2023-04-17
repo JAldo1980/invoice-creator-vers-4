@@ -94,12 +94,14 @@ select {
 
 .inner-container {
   padding: 0 2.5em;
+  display: none;
 }
 
 header {
   padding: 2em;
   background-color: var(--header-background);
   text-align: center;
+  display: none;
 }
 
 header h3 {
@@ -117,80 +119,9 @@ header p {
   justify-content: space-between;
   text-align: start;
 }
+/*  */
 
-/* .fiscal-legal-container{
-
-} */
-
-.item-input-box {
-  margin-top: 2em;
-  display: flex;
-  width: 100%;
-  text-align: center;
-}
-
-.input-left {
-  padding: 0.6em;
-  width: 90%;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border: 1px solid lightgray;
-}
-
-.input-currency {
-  width: 40%;
-  border: 1px solid lightgray;
-  padding-left: 0.5em;
-}
-
-.input-quantity {
-  width: 20%;
-  border: 1px solid lightgray;
-  text-align: center;
-}
-
-.add-inputs {
-  width: 15%;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: 1px solid #3770ed;
-  cursor: pointer;
-  background-color: #3770ed;
-  color: white;
-  font-weight: 900;
-  transition: 0.4s;
-}
-
-.add-inputs:hover {
-  background-color: lightskyblue;
-  border: 1px solid lightskyblue;
-  transition: 0.4s;
-}
-
-.add-inputs:active {
-  background-color: darkblue;
-  border: 1px solid darkblue;
-}
-
-input::placeholder {
-  opacity: 0.6;
-}
-
-.currency-select {
-  position: relative;
-  cursor: pointer;
-}
-
-.currency-select option {
-  position: absolute;
-  top: 90%;
-  left: 0;
-}
-
-.currency-select,
-.currency-select option {
-  border: 1px solid lightgray;
-}
+/*  */
 
 /* INPUT SECTION */
 
@@ -356,6 +287,7 @@ div:nth-child(3) {
 }
 
 .popup-inner-container h3 {
+  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -369,16 +301,58 @@ div:nth-child(3) {
 }
 
 .popup-btn button {
+  margin-top: 1em;
+  padding: 0.5em 3em;
+  font-size: 1.2rem;
   cursor: pointer;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  transition: 0.4s;
+}
+
+.popup-btn button:hover {
+  background-color: lightblue;
+  transition: 0.4s;
+}
+
+.span-highlight-yellow {
+  background-color: yellow;
+  padding: 0.2em;
 }
 
 /* FORM STYLING */
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+.form-box-styling {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+form {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 1rem;
+  width: 100%;
+  padding: 1em;
+}
+
+form h3 {
+  font-size: 1.5rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.form-text p {
+  text-align: center;
+}
+
 label {
   display: block;
   font-weight: bold;
@@ -389,7 +363,6 @@ select {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
   box-sizing: border-box;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -405,8 +378,144 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
+
+input[type="text"],
+input[type="number"],
+input[type="url"] {
+  width: 100%;
+}
+
 .error {
   color: red;
   font-size: 0.8rem;
   margin-top: 0.2rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: start;
+}
+
+.color-1 {
+  background-color: lightblue;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.color-2 {
+  margin-top: 1em;
+  background-color: lightyellow;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.color-3 {
+  margin-top: 1em;
+  background-color: lightpink;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.color-3 h3 {
+  text-align: start;
+}
+
+form button {
+  font-size: 1.5rem;
+  margin-top: 2em;
+  width: 100%;
+  padding: 0.5em 2em;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: lightblue;
+  transition: 0.4s;
+}
+
+/* INVOICE BUILDER */
+
+.item-input-box {
+  margin-top: 2em;
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+
+.input-left {
+  margin-bottom: 0;
+  padding: 0.6em;
+  width: 90%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.input-currency {
+  width: 40%;
+  border: 1px solid lightgray;
+  padding-left: 0.5em;
+  margin-bottom: 0;
+  border-radius: none;
+}
+
+.input-quantity {
+  width: 20%;
+  border: 1px solid lightgray;
+  text-align: center;
+  margin-bottom: 0;
+  border-radius: none;
+}
+
+.add-inputs {
+  width: 15%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #3770ed;
+  cursor: pointer;
+  background-color: #3770ed;
+  color: white;
+  font-weight: 900;
+  transition: 0.4s;
+}
+
+.add-inputs:hover {
+  background-color: lightskyblue;
+  border: 1px solid lightskyblue;
+  transition: 0.4s;
+}
+
+.add-inputs:active {
+  background-color: darkblue;
+  border: 1px solid darkblue;
+}
+
+input::placeholder {
+  opacity: 0.6;
+}
+
+.currency-select {
+  position: relative;
+  cursor: pointer;
+  width: 15%;
+  margin-bottom: 0;
+  border-radius: none;
+}
+
+.currency-select option {
+  position: absolute;
+  top: 90%;
+  left: 0;
+}
+
+.currency-select,
+.currency-select option {
+  border: 1px solid lightgray;
 }
